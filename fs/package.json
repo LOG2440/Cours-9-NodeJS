@@ -1,0 +1,14 @@
+{
+    "name": "server",
+    "version": "1.0.0",
+    "description": "Simple server with comments",
+    "main": "exemple_fs_sans_promesse.js",
+    "scripts": {
+        "fs_sans_promesse": "node exemple_fs_sans_promesse.js",
+        "fs_avec_promesse": "node exemple_fs_avec_promesse.js",
+        "fs_avec_promesse_de_fs": "node exemple_fs_avec_promesse_de_fs.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {}
+}
