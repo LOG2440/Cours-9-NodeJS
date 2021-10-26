@@ -1,0 +1,14 @@
+{
+    "name": "server",
+    "version": "1.0.0",
+    "description": "Simple server with comments",
+    "main": "exemple_utilisation_app.js",
+    "scripts": {
+        "start": "node exemple_utilisation_app.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "express": "^4.17.1"
+    }
+}

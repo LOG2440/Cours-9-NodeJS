@@ -26,8 +26,8 @@ const fs = require('fs');
 const textToWrite = 'Hello World';
 const fileName = 'file1.txt';
 readFilePromise(fileName)
- .then(file2Name => {
-   writeFilePromise(file2Name, textToWrite);
+ .then(async file2Name => {
+   await writeFilePromise(file2Name, textToWrite);
    return file2Name; })
  .then(file2Name => readFilePromise(file2Name))
  .then(data =>console.log(data))
