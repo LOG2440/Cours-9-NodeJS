@@ -11,7 +11,7 @@ app.post('/commentaires', (req, res) => {
   const auteur = req.body.auteur
   const commentaire = req.body.commentaire
   commentaires.push({auteur, commentaire})
-  res.redirect('/commentaires')
+  res.status(201).redirect('/commentaires')
 })
 
 app.get('/commentaires', (req, res) => {
