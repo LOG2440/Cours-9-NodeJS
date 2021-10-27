@@ -6,7 +6,7 @@ app.use(require('cookie-parser')('mon secret'));
 app.get('/', function(req, res) {
     res.cookie('contenuNonSigne', 'John Lewis');
     res.cookie('contenuSigne', 'John Coltrane', { signed: true });
-    res.send({'body': 'Do bi dou bi dou wap!'});
+    res.send({'genre': 'Jazz'});
 });
 
 app.get('/about', function(req, res) {
