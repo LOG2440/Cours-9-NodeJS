@@ -1,6 +1,6 @@
 const express = require('express');
 const fileUpload = require('express-fileupload'); // middleware pour des fichiers
-const path = require('path');
+const path = require('path'); // module natif de NodeJS
 const fs = require('fs');
 
 const app = express();
@@ -28,6 +28,20 @@ app.post('/upload', (req, res) => {
   });
 });
 
+app.get('/upload/:name', async (req, res) => {
+  const uploadPath = path.join(__dirname, 'uploads', req.params.name);
+  try {
+    await fs.promises.access(uploadPath);
+    res.sendFile(uploadPath);
+  }
+  catch (e) {
+    res.status(404).send('Fichier non trouvé');
+  }
+});
+// On peut utiliser le middleware "static" si on n’a pas de logique de plus à faire
+// app.use('/upload',express.static('uploads')); // Contenu du répertoire "uploads"
+
+
 app.listen(3000, () => {
-  console.log(`Serveur disponible sur http://localhost:${PORT}`);
+  console.log(`Serveur disponible sur http://localhost:3000`);
 });
