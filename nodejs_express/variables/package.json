@@ -1,0 +1,14 @@
+{
+    "name": "server",
+    "version": "1.0.0",
+    "description": "Variables et gestion des requêtes et réponses",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js"
+    },
+    "author": "Nikolay Radoev",
+    "license": "CC-BY-3.0",
+    "dependencies": {
+        "express": "4.18.2"
+    }
+}
