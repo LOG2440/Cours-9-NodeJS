@@ -1,29 +1,27 @@
 const http = require("http");
 const url = require("url");
 
-http
-  .createServer(function (req, res) {
+http.createServer(function (req, res) {
     // On décompose la requête
-    const r = url.parse(req.url, true);
-    const path = r.pathname;
-    const query = r.query;
+    const fullURL = url.parse(req.url, true);
+    const path = fullURL.pathname;
+    const query = fullURL.query;
+
+    res.writeHead(200, { "Content-Type": "text/plain;" });
     switch (path) {
       case "/":
-        res.writeHead(200, { "Content-Type": "text/plain;" });
         res.end("Page principale");
         break;
       case "/about":
-        res.writeHead(200, { "Content-Type": "text/plain;" });
         res.end("Page d'information");
         break;
       case "/data":
-        res.writeHead(200, { "Content-Type": "text/plain;" });
         const data = query.message ? query.message : "rien";
         res.end(`Vous avez envoye : ${data}`);
         break;
       case "/add":
-        res.writeHead(200, { "Content-Type": "text/plain;" });
-        res.end(`Vous avez envoye : ${parseInt(query.a) + parseInt(query.b)}`);
+        const sum = 0; // TODO
+        res.end(`La somme est : ${sum}`);
         break;
       default:
         res.writeHead(404, { "Content-Type": "text/plain; charset=utf-8" });
@@ -32,3 +30,5 @@ http
     }
   })
   .listen(3000);
+
+console.log('Serveur avec routage démarré sur localhost:3000');

@@ -1,11 +1,11 @@
 {
     "name": "server",
     "version": "1.0.0",
-    "description": "Simple server with comments",
-    "main": "exemple_simple.js",
+    "description": "Serveur simple avec NodeJS seulement",
+    "main": "server.js",
     "scripts": {
-        "start_simple": "node exemple_simple.js",
-        "start_route": "node exemple_avec_routage.js"
+        "start": "node server.js",
+        "router": "node router.js"
     },
     "author": "",
     "license": "ISC",
