@@ -4,8 +4,8 @@ const path = require('path'); // module natif de NodeJS
 const fs = require('fs');
 
 const app = express();
-app.use(fileUpload({ limits: 1024 * 1024 })); // Pas plus que 1MB
-app.use(express.static('public')); // Contenu statique (notre page web)
+app.use(fileUpload({ limits: { fileSize: 1024 * 1024 }, abortOnLimit: true })); // Pas plus que 1MB
+app.use("/", express.static('public')); // Contenu statique (notre page web)
 
 app.post('/upload', (req, res) => {
   if (!req.files || !req.files.file) {
@@ -23,7 +23,7 @@ app.post('/upload', (req, res) => {
     }
 
     // Sera interprété comme du HTML par le navigateur
-    res.send(`<p>Le fichier "${file.name}" a été téléversé et sauvegardé</p>
+    res.status(201).send(`<p>Le fichier "${file.name}" a été téléversé et sauvegardé</p>
     <a href="./">Retourner à la page principale</a>`);
   });
 });
@@ -43,5 +43,5 @@ app.get('/upload/:name', async (req, res) => {
 
 
 app.listen(3000, () => {
-  console.log(`Serveur disponible sur http://localhost:3000`);
+  console.log(`Serveur de fichiers disponible sur http://localhost:3000`);
 });
