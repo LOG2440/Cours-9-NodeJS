@@ -1,0 +1,14 @@
+{
+    "name": "fs_module",
+    "version": "1.0.0",
+    "description": "Utilisation du module FS",
+    "main": "fs_callback.js",
+    "scripts": {
+        "fs_callback": "node fs_callback",
+        "fs_promise": "node fs_promise.js",
+        "start": "node fs_callback.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {}
+}

@@ -1,0 +1,13 @@
+{
+    "name": "server",
+    "version": "1.0.0",
+    "description": "Serveur simple avec NodeJS seulement",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js",
+        "router": "node router.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {}
+}
