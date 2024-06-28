@@ -3,8 +3,8 @@ const http = require('http');
 const app = express();
 
 function firstMiddleware(req, res, next) {
-    res.envoyerAllo = () => res.send('Allo tout le monde');
-    next();
+    if(req.get('X-Auth')==='123') return next();
+    res.status(401).send('Accès refusé');
 }
 function lastMiddleware(req, res) {
     console.log(`Requête vers ${req.originalUrl} répondue avec ${res.statusCode}`);
@@ -13,7 +13,7 @@ function lastMiddleware(req, res) {
 // On inclut nos middlwares ici
 app.use(firstMiddleware);
 app.use((req, res, next) => {
-    res.envoyerAllo();
+    res.send('Allo tout le monde');
     next();
 });
 app.use(lastMiddleware);
