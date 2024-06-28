@@ -7,7 +7,7 @@ http.createServer(function (req, res) {
     const path = fullURL.pathname;
     const query = fullURL.query;
 
-    res.writeHead(200, { "Content-Type": "text/plain;" });
+    res.setHeader("Content-Type", "text/plain; charset=utf-8");
     switch (path) {
       case "/":
         res.end("Page principale");
@@ -24,7 +24,7 @@ http.createServer(function (req, res) {
         res.end(`La somme est : ${sum}`);
         break;
       default:
-        res.writeHead(404, { "Content-Type": "text/plain; charset=utf-8" });
+        res.statusCode = 404;
         res.end("Désolé. Cette page n'existe pas");
         break;
     }
