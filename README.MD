@@ -9,7 +9,7 @@ Par défaut, NodeJS utilise la syntaxe CJS pour la gestion des modules JS dans s
 
 NodeJS peut être utilisé comme un serveur HTTP à l'aide de son module natif `http`. Sa syntaxe est cependant assez verbeuse et c'est plutôt rare d'utiliser NodeJS en tant que serveur HTTP sans une librairie externe. Les exemples dans cet entrepôt utilisent ExpressJS. Consultez la section [Librairie Express](#librairie-express) pour plus d'information.
 
-Le répertoire [nodejs](./nodejs/) contient 2 exemples de serveurs HTTP utilisant le module natif `http`. Chaque serveur est créé avec la fonction `createServer(callback)` où `callback` est une fonction de rappel qui gère la logique de traitement des requêtes. Le serveur est par la suite démarré sur un port spécifique à l'aide de la fonction `listen(port)`.
+Le répertoire [nodejs](./nodejs/) contient 2 exemples de serveurs HTTP utilisant le module natif `http`. Chaque serveur est créé avec la fonction `createServer(callback)` où `callback` est une fonction de rappel qui gère la logique de traitement des requêtes et qui sera appelée à chaque requête reçue par le serveur. Le serveur est par la suite démarré sur un port spécifique à l'aide de la fonction `listen(port)`.
 
 Le fichier [server.js](./nodejs/server.js) est un exemple minimaliste d'un serveur HTTP qui répondre de la même manière à toute requête envoyée au serveur.
 
@@ -19,7 +19,7 @@ Le fichier [routing.js](./nodejs/routing.js) est un exemple d'un serveur qui peu
 
 La librarie [ExpressJS](https://expressjs.com/) est une librairie minimaliste qui permet de plus facilement gérer un serveur HTTP utilisant NodeJS.
 
-Le répertoire [nodejs_express](./nodejs_express/) contient plusieurs exemples d'utilisation de la librairie. Notez que comme c'est une dépendance externe, vous devez l'installer à travers la commande `npm ci` dans chaque sous-répertoire qui l'utilise. Certains exemples peuvent utiliser d'autres dépendances externes qui seront aussi installés avec la même commande.
+Le répertoire [nodejs_express](./nodejs_express/) contient plusieurs exemples d'utilisation de la librairie. Notez que comme c'est une dépendance externe, vous devez l'installer à travers la commande `npm ci` dans chaque sous-répertoire qui l'utilise. Certains exemples peuvent utiliser d'autres dépendances externes qui seront aussi installées avec la même commande.
 
 ### Middlewares
 
@@ -74,7 +74,7 @@ Le comportement par défaut d'une page web après la soumission d'un formulaire 
 
 ### Temoins (_Cookie_)
 
-Express permet de gérer les témoins (_cookies_) HTTP. On peut créer ou trairer des cookies déjà existants. 
+Express permet de gérer les témoins (_cookies_) HTTP. On peut créer ou traiter des cookies déjà existants. 
 
 Express offre un type de cookie spécialisé : un cookie signé. Ce cookie est généré à l'aide du middleware `cookie-parser` et un code secret. Si le client modifie le cookie signé et l'envoie au serveur, le middleware peut détecter ce changement et agir en conséquence.
 

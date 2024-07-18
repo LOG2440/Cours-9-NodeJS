@@ -1,10 +1,14 @@
 const express = require('express');
 const fileUpload = require('express-fileupload'); // middleware pour des fichiers
-const path = require('path'); // module natif de NodeJS
+const path = require('path');
 const fs = require('fs');
 
 const app = express();
-app.use(fileUpload({ limits: { fileSize: 1024 * 1024 }, abortOnLimit: true })); // Pas plus que 1MB
+app.use(fileUpload({
+  limits: { fileSize: 1024 * 1024 }, // Pas plus que 1MB
+  abortOnLimit: true
+}));
+ 
 app.use("/", express.static('public')); // Contenu statique (notre page web)
 
 app.post('/upload', (req, res) => {

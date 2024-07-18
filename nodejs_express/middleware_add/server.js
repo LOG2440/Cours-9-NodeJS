@@ -2,18 +2,18 @@ const express = require('express');
 const http = require('http');
 const app = express();
 
-function handleRequest(req, res, handler) {
-    const message = `Requête ${req.method} reçue sur ${req.originalUrl} et capté par ${handler}`;
+function handleRequest(req, res, httpMethod) {
+    const message = `Requête ${req.method} reçue sur ${req.originalUrl} et capté par ${httpMethod}`;
     console.log(message);
     res.send(message);
 }
 // On inclut nos middlware ici
-app.get("/", (req, res, next) => { handleRequest(req, res, 'get') });
-app.post("/cours", (req, res, next) => { handleRequest(req, res, 'post') });
-app.put("/cours", (req, res, next) => { handleRequest(req, res, 'put') });
-app.delete("/cours", (req, res, next) => { handleRequest(req, res, 'delete') });
-app.use("/cours", (req, res, next) => { handleRequest(req, res, 'use') });
-app.all("/cours/gigl", (req, res, next) => { handleRequest(req, res, 'all') });
+app.get("/", (req, res) => { handleRequest(req, res, 'GET') });
+app.post("/cours", (req, res) => { handleRequest(req, res, 'POST') });
+app.put("/cours", (req, res) => { handleRequest(req, res, 'PUT') });
+app.delete("/cours", (req, res) => { handleRequest(req, res, 'DELETE') });
+app.use("/cours", (req, res) => { handleRequest(req, res, 'USE') });
+app.all("/cours/gigl", (req, res) => { handleRequest(req, res, 'ALL') });
 
 http.createServer(app).listen(3000);
 console.log('Serveur avec Express démarré sur localhost:3000');
