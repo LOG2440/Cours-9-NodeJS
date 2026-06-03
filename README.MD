@@ -57,12 +57,16 @@ L'exemple dans [variables/server.js](./nodejs_express/variables/server.js) prés
 Express permet de grouper plusieurs gestionnaires de routes ayant le même préfixe ensemble à l'aide d'un _Router_. 
 Ceci permet d'isoler et grouper des routes communes ensemble et éviter à devoir mettre tout le code de votre serveur dans le même fichier.
 
-L'exemple dans [routing/server.js](./nodejs_express/routing/server.js) présente un exemple d'utilisation de routeur Express. La configuration du routeur est dans le fichier [routes.js](./nodejs_express/routing/routes.js) et le routeur est attaché à l'application Express à l'aide de la méthode `use` : 
+L'exemple dans [routing/server.js](./nodejs_express/routing/server.js) présente un exemple d'utilisation de routeurs Express. La configuration des 2 routeurs est dans les fichiers [users.js](./nodejs_express/routing/users.js) et [products.js](./nodejs_express/routing/products.js) et chaque routeur est attaché à l'application Express à l'aide de la méthode `use` : 
 ```js
-const routes = require('./routes');
+const usersRouter = require("./users");;
+const productsRouter = require("./products");
 const app = express();
-app.use('/myRouter', routes);
+app.use("/users", usersRouter);
+app.use("/products", productsRouter);
 ```
+
+Une requête `GET /users/123` serait traitée par le gestionnaire de route `GET /:id` du routeur `usersRouter` et une requête `DELETE /products/456` serait traitée par le gestionnaire de route `DELETE /:id` du routeur `productsRouter`.
 
 ### Formulaire
 
