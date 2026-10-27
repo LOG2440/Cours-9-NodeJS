@@ -5,7 +5,7 @@
     "main": "server.js",
     "scripts": {
         "start": "node server.js",
-        "router": "node router.js"
+        "router": "node routing.js"
     },
     "author": "",
     "license": "ISC",
